@@ -41,7 +41,7 @@ class Student {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;  // Student, Teacher, Admin
+        this.role = role;  
     }
 
     public int getId() { return id; }
@@ -59,16 +59,16 @@ public class LibraryManagementSystem {
     private ArrayList<Student> students = new ArrayList<>();
     private Student loggedInStudent;
 
-    // Declare bookTable at the class level
+    
     private JTable bookTable;
 
     public LibraryManagementSystem() {
-        // Sample users (Admin, Student, Teacher)
+        
         students.add(new Student(1, "admin", "admin@example.com", "admin", "Admin"));
         students.add(new Student(2, "student", "student@example.com", "student", "Student"));
         students.add(new Student(3, "teacher", "teacher@example.com", "teacher", "Teacher"));
 
-        // Adding 50+ books
+        
         for (int i = 1; i <= 50; i++) {
             books.add(new Book(i, "Book Title " + i, "Author " + i, "Publisher " + i, 2000 + (i % 20)));
         }
@@ -89,13 +89,13 @@ public class LibraryManagementSystem {
         public SplashScreen() {
             setLayout(new BorderLayout());
             
-            // Adding a smooth gradient background to the entire panel
+        
             JPanel gradientPanel = new JPanel() {
                 @Override
                 protected void paintComponent(Graphics g) {
                     super.paintComponent(g);
                     Graphics2D g2 = (Graphics2D) g;
-                    // Gradient from black to dark grey
+        
                     GradientPaint gp = new GradientPaint(0, 0, Color.BLACK, getWidth(), getHeight(), new Color(50, 50, 50));
                     g2.setPaint(gp);
                     g2.fillRect(0, 0, getWidth(), getHeight());
@@ -103,73 +103,73 @@ public class LibraryManagementSystem {
             };
             gradientPanel.setLayout(new BorderLayout());
     
-            // Title Panel (Centered text)
+        
             JPanel titlePanel = new JPanel();
             titlePanel.setOpaque(false);
             titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
     
-            // Project Name (Main title)
+            
             JLabel projectNameLabel = new JLabel("Library Management System", JLabel.CENTER);
             projectNameLabel.setFont(new Font("Arial", Font.BOLD, 55));
-            projectNameLabel.setForeground(Color.WHITE);  // White text for contrast on dark background
+            projectNameLabel.setForeground(Color.WHITE);  
             projectNameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            projectNameLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0)); // Add space around the title
+            projectNameLabel.setBorder(BorderFactory.createEmptyBorder(20, 0, 20, 0));
             titlePanel.add(projectNameLabel);
     
-            // University Name in Arial, enhanced style
+            
             JLabel universityLabel = new JLabel("Thal University Bhakkar", JLabel.CENTER);
             universityLabel.setFont(new Font("Arial", Font.PLAIN, 35));
-            universityLabel.setForeground(new Color(255, 255, 255, 180)); // Slightly faded effect for elegance
+            universityLabel.setForeground(new Color(255, 255, 255, 180));
             universityLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-            universityLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 30, 0)); // Space below university name
+            universityLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 30, 0));
             titlePanel.add(universityLabel);
     
-            // Adding the title panel to the gradient panel
+        
             gradientPanel.add(titlePanel, BorderLayout.CENTER);
     
-            // Button Panel (Centered)
+            
             JPanel buttonPanel = new JPanel();
             buttonPanel.setOpaque(false);
-            buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20)); // Centered button with vertical spacing
+            buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 0, 20)); 
     
-            // "Proceed to Login" Button with black background and custom look
+            
             JButton proceedButton = new JButton("Proceed to Login") {
                 @Override
                 protected void paintComponent(Graphics g) {
                     if (getModel().isArmed()) {
-                        g.setColor(new Color(80, 80, 80));  // Darker shade when clicked (pressed)
+                        g.setColor(new Color(80, 80, 80));
                     } else if (getModel().isRollover()) {
-                        g.setColor(new Color(60, 60, 60));  // Slightly lighter on hover (hover effect)
+                        g.setColor(new Color(60, 60, 60));
                     } else {
-                        g.setColor(Color.WHITE);  // Normal background color is black
+                        g.setColor(Color.WHITE);
                     }
-                    g.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);  // Rounded corners
-                    super.paintComponent(g);  // Standard button painting
+                    g.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
+                    super.paintComponent(g);
                 }
             };
     
-            proceedButton.setFont(new Font("Arial", Font.BOLD, 22));  // Bold Arial font for the text
-            proceedButton.setForeground(Color.black);  // Button text color changed to white for contrast
-            proceedButton.setPreferredSize(new Dimension(250, 60));  // Button size
-            proceedButton.setCursor(new Cursor(Cursor.HAND_CURSOR));  // Hand cursor on hover to indicate clickability
-            proceedButton.setFocusPainted(false);  // Remove focus border for a cleaner look
-            proceedButton.setBorder(BorderFactory.createEmptyBorder());  // Remove default border for a sleek look
+            proceedButton.setFont(new Font("Arial", Font.BOLD, 22));  
+            proceedButton.setForeground(Color.black);  
+            proceedButton.setPreferredSize(new Dimension(250, 60)); 
+            proceedButton.setCursor(new Cursor(Cursor.HAND_CURSOR));  
+            proceedButton.setFocusPainted(false); 
+            proceedButton.setBorder(BorderFactory.createEmptyBorder());
     
-            // Action when the button is clicked
+            
             proceedButton.addActionListener(e -> goToLogin());
     
             buttonPanel.add(proceedButton);
     
-            // Adding the button panel to the gradient panel
+            
             gradientPanel.add(buttonPanel, BorderLayout.SOUTH);
     
-            // Finally, add the gradient panel to the main panel
+        
             add(gradientPanel);
         }
     
-        // Method to transition to the Login Screen
+        
         private void goToLogin() {
-            // Assuming frame is initialized elsewhere (not shown here)
+            
             frame.getContentPane().removeAll();
             frame.getContentPane().add(new LoginPanel());
             frame.revalidate();
@@ -195,11 +195,11 @@ public class LibraryManagementSystem {
             gbc.gridwidth = 2;
             add(titleLabel, gbc);
     
-            // Username Field
+            
             addField("Username:", gbc, 1);
             usernameField = new JTextField(20);
             usernameField.setName("username");
-            usernameField.setText("Enter your username");  // Placeholder text
+            usernameField.setText("Enter your username");  
             usernameField.setForeground(Color.GRAY);
             usernameField.addFocusListener(new FocusAdapter() {
                 public void focusGained(FocusEvent e) {
@@ -222,7 +222,7 @@ public class LibraryManagementSystem {
             addField("Password:", gbc, 2);
             passwordField = new JPasswordField(20);
             passwordField.setName("password");
-            passwordField.setText("Enter your password");  // Placeholder text
+            passwordField.setText("Enter your password");  
             passwordField.setForeground(Color.GRAY);
             passwordField.addFocusListener(new FocusAdapter() {
                 public void focusGained(FocusEvent e) {
@@ -327,7 +327,7 @@ public class LibraryManagementSystem {
             addField("Name:", gbc, 1);
             nameField = new JTextField(20);
             nameField.setName("name");
-            nameField.setText("Enter your full name");  // Placeholder text
+            nameField.setText("Enter your full name");  
             nameField.setForeground(Color.GRAY);
             setPlaceholderBehavior(nameField);
             add(nameField, gbc);
@@ -335,7 +335,7 @@ public class LibraryManagementSystem {
             addField("Email:", gbc, 2);
             emailField = new JTextField(20);
             emailField.setName("email");
-            emailField.setText("Enter your email address");  // Placeholder text
+            emailField.setText("Enter your email address");  
             emailField.setForeground(Color.GRAY);
             setPlaceholderBehavior(emailField);
             add(emailField, gbc);
@@ -343,7 +343,7 @@ public class LibraryManagementSystem {
             addField("Username:", gbc, 3);
             usernameField = new JTextField(20);
             usernameField.setName("username");
-            usernameField.setText("Choose a username");  // Placeholder text
+            usernameField.setText("Choose a username");  
             usernameField.setForeground(Color.GRAY);
             setPlaceholderBehavior(usernameField);
             add(usernameField, gbc);
@@ -351,7 +351,7 @@ public class LibraryManagementSystem {
             addField("Password:", gbc, 4);
             passwordField = new JTextField(20);
             passwordField.setName("password");
-            passwordField.setText("Enter a strong password");  // Placeholder text
+            passwordField.setText("Enter a strong password");  
             passwordField.setForeground(Color.GRAY);
             setPlaceholderBehavior(passwordField);
             add(passwordField, gbc);
@@ -422,7 +422,7 @@ public class LibraryManagementSystem {
     }
     
 
-    // Dashboard Panel
+    
     class DashboardPanel extends JPanel {
         private JTabbedPane tabbedPane;
 
@@ -462,12 +462,12 @@ public class LibraryManagementSystem {
             panel.add(new JScrollPane(adminInfo));
             return panel;
         }
-        // Now use bookTable in the createBookPanel method
+        
     private JPanel createBookPanel() {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
-        // Search Panel
+        
         JPanel searchPanel = new JPanel();
         searchPanel.setLayout(new FlowLayout());
         JTextField searchField = new JTextField(20);
@@ -481,18 +481,18 @@ public class LibraryManagementSystem {
 
         panel.add(searchPanel, BorderLayout.NORTH);
 
-        // Book Table with filtering functionality
+        
         String[] columns = {"ID", "Title", "Author", "Publisher", "Year", "Available"};
         DefaultTableModel model = new DefaultTableModel(columns, 0);
 
-        // Initialize the bookTable here (no need to redeclare)
+        
         bookTable = new JTable(model);
         bookTable.setFillsViewportHeight(true);
 
-        // Populate the table with initial book data
+        
         updateBookTable(model);
 
-        // Adding a click listener to select a book
+        
         bookTable.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
                 int selectedRow = bookTable.getSelectedRow();
@@ -509,7 +509,7 @@ public class LibraryManagementSystem {
                         if (confirmation == JOptionPane.YES_OPTION) {
                             selectedBook.borrowBook();
                             JOptionPane.showMessageDialog(frame, "Book borrowed successfully!");
-                            updateBookTable(model);  // Update table after borrowing
+                            updateBookTable(model);
                         }
                     } else {
                         JOptionPane.showMessageDialog(frame, "Book is not available.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -518,20 +518,20 @@ public class LibraryManagementSystem {
             }
         });
 
-        // JScrollPane for book table
+        
         JScrollPane scrollPane = new JScrollPane(bookTable);
         panel.add(scrollPane, BorderLayout.CENTER);
 
         return panel;
     }
 
-    // Method to filter books based on search term
+    
     private void filterBooks(String searchTerm) {
         DefaultTableModel model = (DefaultTableModel) bookTable.getModel();
-        model.setRowCount(0); // Clear current table data
+        model.setRowCount(0); 
         ArrayList<Book> filteredBooks = new ArrayList<>();
 
-        // Filter books by title, author, or publisher
+        
         for (Book book : books) {
             if (book.getTitle().toLowerCase().contains(searchTerm.toLowerCase()) ||
                 book.getAuthor().toLowerCase().contains(searchTerm.toLowerCase()) ||
@@ -540,21 +540,21 @@ public class LibraryManagementSystem {
             }
         }
 
-        // Update table with filtered books
+        
         for (Book book : filteredBooks) {
             model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getPublisher(), book.getYear(), book.isAvailable()});
         }
     }
 
-    // Utility method to update the table with all books
+    
     private void updateBookTable(DefaultTableModel model) {
-        model.setRowCount(0);  // Clear existing rows
+        model.setRowCount(0);
         for (Book book : books) {
             model.addRow(new Object[]{book.getId(), book.getTitle(), book.getAuthor(), book.getPublisher(), book.getYear(), book.isAvailable()});
         }
     }
 
-    // Utility method to get a book by ID
+    
     private Book getBookById(int id) {
         for (Book book : books) {
             if (book.getId() == id) {
